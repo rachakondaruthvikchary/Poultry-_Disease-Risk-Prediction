@@ -43,7 +43,7 @@ def load_config():
 
 config = load_config()
 
-# --- Try loading AI models ---
+# --- Try loading AI models (graceful fallback to demo mode) ---
 @st.cache_resource
 def load_models():
     models_dir = PROJECT_ROOT / "AI" / "models"
@@ -54,30 +54,41 @@ def load_models():
     # Load labels
     labels_path = models_dir / "poultry_cnn_labels.json"
     if labels_path.exists():
-        with open(labels_path, 'r') as f:
-            labels = json.load(f)
+        try:
+            with open(labels_path, 'r') as f:
+                labels = json.load(f)
+        except Exception:
+            labels = None
 
-    # Load CNN model
+    # Load CNN model — only if file exists AND tensorflow is available
     keras_path = models_dir / "poultry_cnn.keras"
     if keras_path.exists():
         try:
             import tensorflow as tf
             cnn_model = tf.keras.models.load_model(str(keras_path))
-        except Exception as e:
-            st.warning(f"Could not load CNN model: {e}")
+        except ImportError:
+            pass  # TensorFlow not installed — demo mode
+        except Exception:
+            pass  # Model load failed — demo mode
 
-    # Load risk model
+    # Load risk model — only if file exists AND joblib is available
     risk_path = models_dir / "isolation_forest.pkl"
     if risk_path.exists():
         try:
             import joblib
             risk_model = joblib.load(risk_path)
-        except Exception as e:
-            st.warning(f"Could not load risk model: {e}")
+        except ImportError:
+            pass  # joblib not installed — demo mode
+        except Exception:
+            pass  # Model load failed — demo mode
 
     return cnn_model, risk_model, labels
 
-cnn_model, risk_model, labels = load_models()
+try:
+    cnn_model, risk_model, labels = load_models()
+except Exception:
+    cnn_model, risk_model, labels = None, None, None
+
 MODELS_LOADED = cnn_model is not None and labels is not None
 
 # --- Prediction Logic ---
