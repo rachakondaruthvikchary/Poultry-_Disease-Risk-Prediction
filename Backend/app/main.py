@@ -28,9 +28,10 @@ cors_origins = [
     "http://127.0.0.1:3002",
     "http://127.0.0.1:3003",
     "http://127.0.0.1:3004",
+    "https://poultrydesies.netlify.app",
 ]
 
-# Add configured CORS origins (production Vercel URLs etc.)
+# Add configured CORS origins (production Netlify URLs etc.)
 cors_origins.extend(settings.CORS_ORIGINS)
 
 app.add_middleware(
