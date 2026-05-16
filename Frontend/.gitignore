@@ -1,0 +1,13 @@
+node_modules/
+.next/
+dist/
+build/
+*.log
+.DS_Store
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+.vercel

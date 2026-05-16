@@ -1,0 +1,8 @@
+streamlit
+pillow
+tensorflow-cpu
+numpy
+pandas
+joblib
+scikit-learn
+requests

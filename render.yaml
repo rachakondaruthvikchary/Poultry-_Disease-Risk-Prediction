@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: poultryguard-api
+    runtime: python
+    rootDir: Backend
+    buildCommand: pip install -r requirements.txt && python init_db.py
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_NAME
+        value: PoultryGuard AI API
+      - key: APP_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 120
+      - key: DATABASE_URL
+        value: sqlite:///./poultryguard.db
+      - key: MAX_UPLOAD_MB
+        value: 5
+      - key: ALERT_CONFIDENCE_THRESHOLD
+        value: 0.70
+      - key: PYTHON_VERSION
+        value: 3.10.0

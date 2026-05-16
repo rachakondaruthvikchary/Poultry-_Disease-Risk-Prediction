@@ -1,0 +1,186 @@
+{
+  "diseases": {
+    "Newcastle disease": {
+      "name": "Newcastle disease",
+      "alias": "Newcastle Disease, Pseudofowl Plague",
+      "training": true,
+      "reference": true,
+      "priority": "HIGH",
+      "description": "Viral disease causing high mortality in poultry",
+      "symptoms": [
+        "Neurological signs",
+        "Greenish diarrhea",
+        "Twisted neck"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    },
+    "Salmonellosis-Pullorum": {
+      "name": "Salmonellosis-Pullorum",
+      "alias": "Pullorum Disease, Salmonella pullorum",
+      "training": true,
+      "reference": true,
+      "priority": "HIGH",
+      "description": "Bacterial disease affecting poultry production",
+      "symptoms": [
+        "Diarrhea",
+        "Listlessness",
+        "Dehydration"
+      ],
+      "training_images": 3,
+      "reference_images": 5
+    },
+    "Coccidiosis": {
+      "name": "Coccidiosis",
+      "alias": "Coccidial infection",
+      "training": true,
+      "reference": true,
+      "priority": "HIGH",
+      "description": "Parasitic intestinal disease",
+      "symptoms": [
+        "Bloody diarrhea",
+        "Ruffled feathers",
+        "Poor growth"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    },
+    "Healthy": {
+      "name": "Healthy",
+      "alias": "Normal, Control",
+      "training": true,
+      "reference": true,
+      "priority": "CRITICAL",
+      "description": "Healthy control birds",
+      "symptoms": [],
+      "training_images": 3,
+      "reference_images": 5
+    },
+    "Avian Influenza": {
+      "name": "Avian Influenza",
+      "alias": "Bird Flu, HPAI",
+      "training": true,
+      "reference": true,
+      "priority": "CRITICAL",
+      "description": "Highly contagious viral infection",
+      "symptoms": [
+        "Nasal discharge",
+        "Eye swelling",
+        "Mortality"
+      ],
+      "training_images": 3,
+      "reference_images": 5
+    },
+    "Infectious Bursal Disease": {
+      "name": "Infectious Bursal Disease",
+      "alias": "Gumboro Disease, IBD",
+      "training": true,
+      "reference": true,
+      "priority": "HIGH",
+      "description": "Viral disease affecting immunosuppression",
+      "symptoms": [
+        "Trembling",
+        "Pale and swollen cloacae"
+      ],
+      "training_images": 49,
+      "reference_images": 5
+    },
+    "Marek's Disease": {
+      "name": "Marek's Disease",
+      "alias": "MD, Fowl paralysis",
+      "training": true,
+      "reference": true,
+      "priority": "HIGH",
+      "description": "Viral neoplastic disease",
+      "symptoms": [
+        "Paralysis",
+        "Lameness",
+        "Vision loss"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    },
+    "Fowl Pox": {
+      "name": "Fowl Pox",
+      "alias": "Fowl pox virus, FPV",
+      "training": true,
+      "reference": true,
+      "priority": "MEDIUM",
+      "description": "Viral skin disease",
+      "symptoms": [
+        "Scabs on skin",
+        "Nodular lesions"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    },
+    "Infectious Bronchitis": {
+      "name": "Infectious Bronchitis",
+      "alias": "IB, Viral bronchitis",
+      "training": true,
+      "reference": true,
+      "priority": "HIGH",
+      "description": "Viral respiratory disease",
+      "symptoms": [
+        "Coughing",
+        "Sneezing",
+        "Nasal discharge"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    },
+    "Fowl Cholera": {
+      "name": "Fowl Cholera",
+      "alias": "Avian cholera, Pasteurellosis",
+      "training": true,
+      "reference": true,
+      "priority": "HIGH",
+      "description": "Bacterial disease causing acute septicemia",
+      "symptoms": [
+        "Diarrhea",
+        "Facial edema",
+        "Cyanosis"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    },
+    "Mycoplasmosis-CRD": {
+      "name": "Mycoplasmosis-CRD",
+      "alias": "Chronic Respiratory Disease, CRD",
+      "training": true,
+      "reference": true,
+      "priority": "MEDIUM",
+      "description": "Mycoplasmal respiratory infection",
+      "symptoms": [
+        "Coughing",
+        "Sneezing",
+        "Nasal exudate"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    },
+    "Infectious Coryza": {
+      "name": "Infectious Coryza",
+      "alias": "IC, Coryza",
+      "training": true,
+      "reference": true,
+      "priority": "MEDIUM",
+      "description": "Bacterial infectious disease",
+      "symptoms": [
+        "Nasal discharge",
+        "Face swelling",
+        "Sneezing"
+      ],
+      "training_images": 4,
+      "reference_images": 5
+    }
+  },
+  "summary": {
+    "total_diseases": 12,
+    "training_enabled": 12,
+    "reference_enabled": 12,
+    "total_training_images": 90,
+    "total_reference_images": 60,
+    "last_updated": "2026-05-16 15:43:34"
+  }
+}

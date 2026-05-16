@@ -1,0 +1,58 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background glow -->
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0" />
+    </radialGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DC2626" />
+      <stop offset="100%" style="stop-color:#991B1B" />
+    </linearGradient>
+    <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444" />
+      <stop offset="100%" style="stop-color:#B91C1C" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Glow circle -->
+  <circle cx="150" cy="150" r="140" fill="url(#glow)"/>
+  
+  <!-- Body -->
+  <ellipse cx="150" cy="160" rx="55" ry="70" fill="url(#bodyGrad)"/>
+  
+  <!-- Head -->
+  <circle cx="150" cy="75" r="28" fill="#EF4444"/>
+  
+  <!-- Eye -->
+  <circle cx="157" cy="72" r="4" fill="#FCD34D"/>
+  <circle cx="158" cy="71" r="2" fill="#000"/>
+  
+  <!-- Beak -->
+  <polygon points="170,77 185,75 170,82" fill="#FCD34D"/>
+  
+  <!-- Comb (red on top of head) -->
+  <path d="M 145 50 Q 140 35 150 30 Q 160 35 155 50" fill="#DC2626"/>
+  <path d="M 155 50 Q 160 38 170 35 Q 175 42 170 52" fill="#DC2626"/>
+  
+  <!-- Wattle -->
+  <ellipse cx="145" cy="90" rx="6" ry="10" fill="#DC2626"/>
+  
+  <!-- Wing -->
+  <ellipse cx="110" cy="150" rx="25" ry="45" fill="url(#wingGrad)" transform="rotate(-25 110 150)"/>
+  
+  <!-- Tail feathers -->
+  <path d="M 190 130 Q 220 100 230 70" stroke="#991B1B" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M 190 135 Q 225 110 245 85" stroke="#B91C1C" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 190 140 Q 220 125 235 110" stroke="#DC2626" stroke-width="10" fill="none" stroke-linecap="round"/>
+  
+  <!-- Legs -->
+  <line x1="135" y1="225" x2="135" y2="265" stroke="#FCD34D" stroke-width="4" stroke-linecap="round"/>
+  <line x1="165" y1="225" x2="165" y2="265" stroke="#FCD34D" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Feet -->
+  <line x1="135" y1="265" x2="120" y2="275" stroke="#FCD34D" stroke-width="3" stroke-linecap="round"/>
+  <line x1="135" y1="265" x2="150" y2="275" stroke="#FCD34D" stroke-width="3" stroke-linecap="round"/>
+  <line x1="165" y1="265" x2="150" y2="275" stroke="#FCD34D" stroke-width="3" stroke-linecap="round"/>
+  <line x1="165" y1="265" x2="180" y2="275" stroke="#FCD34D" stroke-width="3" stroke-linecap="round"/>
+</svg>

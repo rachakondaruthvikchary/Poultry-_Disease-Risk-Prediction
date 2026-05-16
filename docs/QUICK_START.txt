@@ -1,0 +1,138 @@
+# 🚀 QUICK START CARD - PoultryGuard AI
+
+## ⚡ FASTEST WAY TO START
+
+```
+Double-click: RUN_APP.bat
+```
+
+**That's it!** Both servers will start automatically.
+
+---
+
+## 🌐 WHAT OPENS
+
+| Port | Service | URL |
+|------|---------|-----|
+| 8000 | Backend API | http://localhost:8000 |
+| 3000 | Frontend UI | http://localhost:3000 |
+
+---
+
+## 🔐 LOGIN
+
+- **Email:** test@test.com
+- **Password:** test1234
+
+---
+
+## 📋 WHAT CAN YOU DO
+
+1. **Add Farms** - Create poultry farm records
+2. **Upload Images** - Take/upload bird photos
+3. **Get Predictions** - AI detects diseases with confidence
+4. **View Alerts** - See health warnings
+5. **Export Reports** - Download CSV/PDF
+
+---
+
+## 🧪 QUICK TESTS
+
+### Test Backend
+```
+http://localhost:8000/api/health
+```
+
+### View API Docs
+```
+http://localhost:8000/docs
+```
+
+### Test Prediction
+1. Go to http://localhost:3000
+2. Login
+3. Upload image from: `PoultryGuardAI/AI/sample_data/Healthy/`
+4. See disease detection result
+
+---
+
+## ❌ NOT WORKING?
+
+### Won't start?
+- Check Python: `python --version` (need 3.8+)
+- Check Node: `node --version` (need 16+)
+- Run: `VERIFY_SYSTEM.bat`
+
+### Can't login?
+- Try: test@test.com / test1234
+- Check backend is running
+
+### Port already in use?
+- Find process: `netstat -ano | findstr :8000`
+- Or use different ports
+
+### Image prediction fails?
+- Try clearer image
+- Check model exists: `PoultryGuardAI/AI/models/poultry_cnn.keras`
+
+---
+
+## 🎓 DISEASE DETECTION
+
+Model detects:
+1. Newcastle Disease
+2. Avian Influenza
+3. Infectious Bursal Disease
+4. Marek's Disease
+5. Fowl Pox
+6. Infectious Bronchitis
+7. Salmonellosis/Pullorum
+8. Fowl Cholera
+9. Mycoplasmosis (CRD)
+10. Infectious Coryza
+11. Coccidiosis
+12. Healthy
+
+---
+
+## 📁 KEY FILES
+
+| File | Purpose |
+|------|---------|
+| `RUN_APP.bat` | 🌟 START HERE |
+| `VERIFY_SYSTEM.bat` | Check setup |
+| `START_BACKEND.bat` | Backend only |
+| `START_FRONTEND.bat` | Frontend only |
+| `README.md` | Full documentation |
+
+---
+
+## ⏱️ EXPECTED STARTUP TIME
+
+- Backend: 5-10 seconds
+- Frontend: 10-15 seconds
+- Total: ~20 seconds
+
+---
+
+## 🎯 TYPICAL WORKFLOW
+
+1. Start app → `RUN_APP.bat`
+2. Wait 15 seconds
+3. Browser opens → Login
+4. Add farm → Give it a name
+5. Upload image → Choose from sample data
+6. View result → See disease + confidence
+
+---
+
+## 📞 HELP
+
+- **Full Guide:** Read `README.md`
+- **Setup Details:** Read `SETUP_COMPLETE.md`
+- **Startup Help:** Read `STARTUP_GUIDE.md`
+- **API Info:** Visit http://localhost:8000/docs
+
+---
+
+**Ready? Double-click RUN_APP.bat and enjoy! 🐔✨**

@@ -1,0 +1,25 @@
+﻿sample_data
+Avian Influenza\t0
+Fowl Cholera\t0
+Fowl Pox\t0
+Infectious Bronchitis\t0
+Infectious Bursal Disease\t0
+Infectious Coryza\t0
+Marek's Disease\t0
+Mycoplasmosis-CRD\t0
+Newcastle disease\t376
+Salmonellosis-Pullorum\t949
+
+sample_data_face
+Avian Influenza\t1
+Coccidiosis\t1
+Fowl Cholera\t1
+Fowl Pox\t1
+Healthy\t1
+Infectious Bronchitis\t1
+Infectious Bursal Disease\t1
+Infectious Coryza\t1
+Marek's Disease\t1
+Mycoplasmosis-CRD\t1
+Newcastle disease\t1
+Salmonellosis-Pullorum\t1
