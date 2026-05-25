@@ -12,17 +12,32 @@ from app.main import app
 # Create the standard mangum handler
 mangum_handler = Mangum(app)
 
-def handler(event, context):
-    # Adjust path if needed so FastAPI matches it correctly
-    # Netlify passes the request path in event['path'] or event['rawPath']
+
+def _normalize_api_path(value: str) -> str:
+    """Normalize Netlify function paths to FastAPI's expected /api/* shape."""
     prefix = "/.netlify/functions/api"
-    
-    if 'path' in event:
-        if event['path'].startswith(prefix):
-            event['path'] = event['path'][len(prefix):]
-            
-    if 'rawPath' in event:
-        if event['rawPath'].startswith(prefix):
-            event['rawPath'] = event['rawPath'][len(prefix):]
-            
+    if not value.startswith(prefix):
+        return value
+
+    stripped = value[len(prefix):]
+    if not stripped:
+        return "/"
+
+    if stripped.startswith("/api/") or stripped == "/api":
+        return stripped
+
+    if stripped.startswith("/"):
+        return f"/api{stripped}"
+
+    return f"/api/{stripped}"
+
+
+def handler(event, context):
+    # Netlify can forward either /api/* or /.netlify/functions/api/* paths.
+    if "path" in event and isinstance(event["path"], str):
+        event["path"] = _normalize_api_path(event["path"])
+
+    if "rawPath" in event and isinstance(event["rawPath"], str):
+        event["rawPath"] = _normalize_api_path(event["rawPath"])
+
     return mangum_handler(event, context)

@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
     typescript: {
           ignoreBuildErrors: true,
     },
+    async rewrites() {
+          return [
+                {
+                      source: "/api/:path*",
+                      destination: "/.netlify/functions/api/:path*",
+                },
+          ];
+    },
 };
 
 export default nextConfig;

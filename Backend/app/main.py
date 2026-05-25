@@ -29,6 +29,7 @@ cors_origins = [
     "http://127.0.0.1:3003",
     "http://127.0.0.1:3004",
     "https://poultrydesies.netlify.app",
+    "https://poultry-desies.netlify.app",
 ]
 
 # Add configured CORS origins (production Netlify URLs etc.)
@@ -72,12 +73,17 @@ def healthcheck():
 def on_startup():
     import os
     import shutil
+    import traceback
     from pathlib import Path
     from app.db.session import engine
     from app.models.base import Base
 
-    # 1. Initialize database tables
-    Base.metadata.create_all(bind=engine)
+    # 1. Initialize database tables (do not crash cold start if this fails)
+    try:
+        Base.metadata.create_all(bind=engine)
+    except Exception as e:
+        print(f"Database init warning: {e}")
+        print(traceback.format_exc())
 
     # 2. Copy reference images to /tmp if in serverless environment
     if os.environ.get("NETLIFY") == "true" or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):

@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: Union[list[str], str] = [
         "http://localhost:3000",
         "https://poultrydesies.netlify.app",
+        "https://poultry-desies.netlify.app",
     ]
     MAX_UPLOAD_MB: int = 5
     ALERT_CONFIDENCE_THRESHOLD: float = 0.70
