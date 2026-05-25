@@ -1,13 +1,19 @@
 [build]
-  command = "mkdir -p netlify/functions && rm -rf netlify/functions/app netlify/functions/disease_references && cp -R ../Backend/app netlify/functions/ && cp -R ../Backend/disease_references netlify/functions/ && npm run build"
+  command = "mkdir -p netlify/functions/models && rm -rf netlify/functions/app netlify/functions/disease_references && cp -R ../Backend/app netlify/functions/ && cp -R ../Backend/disease_references netlify/functions/ && cp ../AI/models/isolation_forest.pkl netlify/functions/models/ && cp ../AI/models/risk_scaler.pkl netlify/functions/models/ && npm run build"
   publish = ".next"
 
 [build.environment]
   NEXT_PUBLIC_API_URL = "/api"
   NODE_VERSION = "18"
+  PYTHON_VERSION = "3.10"
 
 [functions]
   directory = "netlify/functions"
+  included_files = [
+    "netlify/functions/app/**/*",
+    "netlify/functions/disease_references/**/*",
+    "netlify/functions/models/**/*"
+  ]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

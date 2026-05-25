@@ -13,3 +13,11 @@ build/
 .vercel
 
 .vercel
+
+# Local Netlify folder
+.netlify
+
+# Dynamic Netlify build folders
+netlify/functions/app/
+netlify/functions/disease_references/
+netlify/functions/models/

@@ -1,3 +1,11 @@
+import os
+import sys
+from pathlib import Path
+
+# Add function directory to python path
+func_dir = Path(__file__).resolve().parent
+sys.path.append(str(func_dir))
+
 from mangum import Mangum
 from app.main import app
 

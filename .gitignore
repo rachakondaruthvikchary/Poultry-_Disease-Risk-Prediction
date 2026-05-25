@@ -65,3 +65,6 @@ AI/sample_data_face/**
 .vercel/
 .turbo/
 Backend/venv/
+
+# Local Netlify folder
+.netlify
