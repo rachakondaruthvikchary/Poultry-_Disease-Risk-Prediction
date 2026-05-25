@@ -1,0 +1,5 @@
+# Optional TensorFlow dependency for PoultryGuardAI
+# Only install if you are using Python 3.9 - 3.11
+# The backend runs fine without TensorFlow using the built-in
+# feature-based and reference-image fallback prediction engine.
+tensorflow==2.15.0
