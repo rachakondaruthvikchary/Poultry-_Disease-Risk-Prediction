@@ -17,8 +17,14 @@ from app.services.image_model_service import get_predictor
 from app.services.image_reference_matcher import reference_matcher
 
 router = APIRouter()
-UPLOAD_DIR = Path("uploads")
-UPLOAD_DIR.mkdir(exist_ok=True)
+def _upload_dir() -> Path:
+    import os
+    if os.environ.get("NETLIFY") == "true" or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+        path = Path("/tmp/uploads")
+    else:
+        path = Path("uploads")
+    path.mkdir(exist_ok=True, parents=True)
+    return path
 
 ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp"}
 
@@ -49,8 +55,12 @@ REFERENCE_FOLDER_MAP = {
 
 
 def _reference_root_dir() -> Path:
-    backend_root = Path(__file__).resolve().parents[3]
-    base = backend_root / "disease_references"
+    import os
+    if os.environ.get("NETLIFY") == "true" or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+        base = Path("/tmp/disease_references")
+    else:
+        backend_root = Path(__file__).resolve().parents[3]
+        base = backend_root / "disease_references"
     base.mkdir(parents=True, exist_ok=True)
     return base
 
@@ -116,7 +126,7 @@ async def predict_image(
 
     extension = (file.filename or "image.jpg").split(".")[-1].lower()
     safe_filename = f"{uuid4().hex}.{extension}"
-    image_path = UPLOAD_DIR / safe_filename
+    image_path = _upload_dir() / safe_filename
     image_path.write_bytes(content)
 
     result = get_predictor().predict(content)

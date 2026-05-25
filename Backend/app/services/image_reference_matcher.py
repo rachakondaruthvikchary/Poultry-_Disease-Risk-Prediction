@@ -42,9 +42,20 @@ class ImageReferenceMatcher:
     """Match uploaded images against disease reference images using feature similarity"""
     
     def __init__(self, reference_dir: str | None = None):
-        backend_root = Path(__file__).resolve().parents[2]
-        sample_data_dir = backend_root.parent / "AI" / "sample_data"
-        self.reference_dir = Path(reference_dir) if reference_dir else sample_data_dir
+        if reference_dir:
+            self.reference_dir = Path(reference_dir)
+        else:
+            import os
+            if os.environ.get("NETLIFY") == "true" or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+                self.reference_dir = Path("/tmp/disease_references")
+            else:
+                backend_root = Path(__file__).resolve().parents[2]
+                local_ref_dir = backend_root / "disease_references"
+                sample_data_dir = backend_root.parent / "AI" / "sample_data"
+                if local_ref_dir.exists():
+                    self.reference_dir = local_ref_dir
+                else:
+                    self.reference_dir = sample_data_dir
         self.disease_references: Dict[str, List[Dict]] = defaultdict(list)
         self._loaded_file_count = 0
         self._load_lock = Lock()

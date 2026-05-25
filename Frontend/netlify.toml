@@ -1,16 +1,19 @@
 [build]
-  command = "npm run build"
+  command = "mkdir -p netlify/functions && rm -rf netlify/functions/app netlify/functions/disease_references && cp -R ../Backend/app netlify/functions/ && cp -R ../Backend/disease_references netlify/functions/ && npm run build"
   publish = ".next"
 
 [build.environment]
-  NEXT_PUBLIC_API_URL = "https://poultryguard-api.onrender.com/api"
+  NEXT_PUBLIC_API_URL = "/api"
   NODE_VERSION = "18"
+
+[functions]
+  directory = "netlify/functions"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [[redirects]]
   from = "/api/*"
-  to = "https://poultryguard-api.onrender.com/api/:splat"
+  to = "/.netlify/functions/api/api/:splat"
   status = 200
   force = true

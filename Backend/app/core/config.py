@@ -27,5 +27,14 @@ class Settings(BaseSettings):
             return [origin.strip() for origin in value.split(",") if origin.strip()]
         return value
 
+    @field_validator("DATABASE_URL", mode="before")
+    @classmethod
+    def check_sqlite_path(cls, value):
+        import os
+        if isinstance(value, str) and value.startswith("sqlite"):
+            if os.environ.get("NETLIFY") == "true" or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+                return "sqlite:////tmp/poultryguard.db"
+        return value
+
 
 settings = Settings()

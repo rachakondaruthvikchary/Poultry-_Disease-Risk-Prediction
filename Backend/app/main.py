@@ -66,3 +66,28 @@ def root():
 @app.get("/api/health")
 def healthcheck():
     return {"status": "ok", "app": settings.APP_NAME}
+
+
+@app.on_event("startup")
+def on_startup():
+    import os
+    import shutil
+    from pathlib import Path
+    from app.db.session import engine
+    from app.models.base import Base
+
+    # 1. Initialize database tables
+    Base.metadata.create_all(bind=engine)
+
+    # 2. Copy reference images to /tmp if in serverless environment
+    if os.environ.get("NETLIFY") == "true" or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+        func_dir = Path(__file__).resolve().parent.parent
+        src_dir = func_dir / "disease_references"
+        dest_dir = Path("/tmp/disease_references")
+        if src_dir.exists():
+            try:
+                shutil.copytree(src_dir, dest_dir, dirs_exist_ok=True)
+                print("Successfully copied preloaded disease references to /tmp/disease_references")
+            except Exception as e:
+                print(f"Error copying references: {e}")
+
