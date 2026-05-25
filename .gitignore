@@ -62,8 +62,6 @@ AI/sample_data_face/**
 !AI/sample_data_face/**/.gitkeep
 
 # Misc
-.vercel/
-.turbo/
 Backend/venv/
 
 # Local Netlify folder
